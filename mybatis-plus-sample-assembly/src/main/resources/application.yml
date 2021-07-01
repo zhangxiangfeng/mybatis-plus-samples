@@ -1,13 +1,32 @@
 # DataSource Config
+#spring:
+#  datasource:
+#    driver-class-name: org.h2.Driver
+#    schema: classpath:db/schema-h2.sql
+#    data: classpath:db/data-h2.sql
+#    url: jdbc:h2:mem:test
+#    username: root
+#    password: test
 spring:
   datasource:
-    driver-class-name: org.h2.Driver
-    schema: classpath:db/schema-h2.sql
-    data: classpath:db/data-h2.sql
-    url: jdbc:h2:mem:test
-    username: root
-    password: test
-
+    dynamic:
+      primary: DS_1 #设置默认的数据源或者数据源组,默认值即为master
+      strict: false #严格匹配数据源,默认false. true未匹配到指定数据源时抛异常,false使用默认数据源
+      datasource:
+        DS_1:
+          schema: classpath:db/schema-h2.sql
+          data: classpath:db/data-h2.sql
+          url: jdbc:h2:mem:test1
+          username: root
+          password: test1
+          driver-class-name: org.h2.Driver # 3.2.0开始支持SPI可省略此配置
+        DS_2:
+          schema: classpath:db/schema-h2.sql
+          data: classpath:db/data-h2.sql
+          url: jdbc:h2:mem:test2
+          username: root
+          password: test2
+          driver-class-name: org.h2.Driver # 3.2.0开始支持SPI可省略此配置
 # Logger Config
 logging:
   level:

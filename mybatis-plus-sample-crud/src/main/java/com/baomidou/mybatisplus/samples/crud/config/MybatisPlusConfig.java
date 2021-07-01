@@ -10,5 +10,4 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @MapperScan("com.baomidou.mybatisplus.samples.crud.mapper")
 public class MybatisPlusConfig {
-
 }

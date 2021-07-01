@@ -2,6 +2,7 @@ package com.baomidou.mybatisplus.samples.assembly;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 /**
  * 1. cd target
@@ -10,6 +11,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author nieqiuqiu
  */
 @SpringBootApplication
+@EnableAspectJAutoProxy(proxyTargetClass=true)
+
 public class AssemblyApplication {
 
     public static void main(String[] args) {
