@@ -30,4 +30,8 @@ spring:
 # Logger Config
 logging:
   level:
+    org.apache.ibatis: debug
     com.baomidou.mybatisplus.samples.assembly: debug
+    org.mybatis: debug
+    org.springframework.jdbc: debug
+    com.baomidou: debug

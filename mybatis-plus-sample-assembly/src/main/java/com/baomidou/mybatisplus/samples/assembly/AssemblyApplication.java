@@ -3,6 +3,7 @@ package com.baomidou.mybatisplus.samples.assembly;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
  * 1. cd target
@@ -12,7 +13,7 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
  */
 @SpringBootApplication
 @EnableAspectJAutoProxy(proxyTargetClass=true)
-
+@EnableTransactionManagement
 public class AssemblyApplication {
 
     public static void main(String[] args) {
