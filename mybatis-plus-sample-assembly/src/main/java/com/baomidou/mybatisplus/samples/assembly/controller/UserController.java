@@ -4,15 +4,18 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.samples.assembly.entity.User;
 import com.baomidou.mybatisplus.samples.assembly.service.impl.UserServiceImpl;
 import com.baomidou.mybatisplus.samples.assembly.service.impl.UserServiceImpl2;
+import lombok.Data;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Locale;
 
 /**
  * @author nieqiuqiu
@@ -29,9 +32,26 @@ public class UserController {
     @Autowired
     private UserServiceImpl2 userServiceImpl2;
 
+    @Autowired
+    private MessageSource messageSource;
+
+    @Data
+    public static class Member {
+        private Long userId;
+
+        private String name;
+    }
+
+    /**
+     * 国际化：https://cloud.tencent.com/developer/article/1630185
+     */
     @RequestMapping(value = "test")
     @Transactional(rollbackFor = Exception.class, propagation = Propagation.REQUIRES_NEW)
     public String test() {
+
+        String[] p = new String[]{"1st", "2rd"};
+        String e40010001 = messageSource.getMessage("E40010001", p, Locale.US);
+
         User user = new User();
         user.setEmail("111111@qq.com");
         user.setAge(18);

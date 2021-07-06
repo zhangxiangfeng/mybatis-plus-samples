@@ -8,6 +8,11 @@
 #    username: root
 #    password: test
 spring:
+  messages:
+    cache-duration: 2d
+    basename: i18n/messages
+  mvc:
+    locale: zh_CN
   datasource:
     dynamic:
       primary: DS_1 #设置默认的数据源或者数据源组,默认值即为master
